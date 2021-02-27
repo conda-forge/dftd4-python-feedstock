@@ -23,6 +23,7 @@ requirements:
     - pkg-config
   host:
     - python
+    - pip
     - dftd4
     - libblas
     - liblapack
