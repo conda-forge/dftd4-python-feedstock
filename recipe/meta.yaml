@@ -1,5 +1,5 @@
 {% set name = "dftd4-python" %}
-{% set version = "3.0.0" %}
+{% set version = "3.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/dftd4/dftd4/archive/v{{ version }}.tar.gz
-  sha256: 6db4ee4c815dbafd5e2efb6f35259798a0b99057ec0e7c40f0cc5a91c094e08e
+  sha256: cba67cce1ebd194e844c582b3ebec250ba7d349894ee6e8052686e39c70131ce
 
 build:
-  number: 1
+  number: 0
   skip: True  # [win or osx]
 
 requirements:
@@ -42,8 +42,11 @@ test:
   requires:
     - pytest
     - setuptools
+    - qcelemental
+    - ase  # [python_impl == 'cpython']
   commands:
-    - pytest --pyargs dftd4 -vv
+    - pytest --pyargs dftd4 -vv  # [python_impl == 'cpython']
+    - pytest --pyargs dftd4 --ignore=dftd4/test_ase.py -vv  # [python_impl == 'pypy']
 
 about:
   home: https://github.com/dftd4/dftd4/tree/main/python
