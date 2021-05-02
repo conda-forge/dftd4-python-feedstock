@@ -6,10 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/dftd4/dftd4/archive/v{{ version }}.tar.gz
-  sha256: cba67cce1ebd194e844c582b3ebec250ba7d349894ee6e8052686e39c70131ce
-  patches:
-     - backport.patch
+  url: https://github.com/dftd4/dftd4/archive/9b70ca8229b932cd5923eb2bd104cba2db844428.tar.gz
+  sha256: 16701a7414b80ef7ff5a8fd66fa638da5f5497df7c64f2b0516be9e1ca0f9263
 
 build:
   number: 0
