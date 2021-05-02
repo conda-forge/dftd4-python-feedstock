@@ -8,19 +8,19 @@ package:
 source:
   url: https://github.com/dftd4/dftd4/archive/v{{ version }}.tar.gz
   sha256: cba67cce1ebd194e844c582b3ebec250ba7d349894ee6e8052686e39c70131ce
+  patches:
+     - backport.patch
 
 build:
   number: 0
-  skip: True  # [win or osx]
+  skip: True  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - meson 0.53.*
-    - ninja
     - python
     - cffi
-    - pkg-config
+    - pkgconfig
   host:
     - python
     - pip
