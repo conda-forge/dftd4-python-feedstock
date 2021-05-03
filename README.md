@@ -31,45 +31,38 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_python3.6.____73_pypy</td>
+              <td>linux_64_python3.6.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12078&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/dftd4-python-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.6.____73_pypy" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/dftd4-python-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.6.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_python3.6.____cpython</td>
+              <td>linux_64_python3.7.____73_pypypython_implpypy</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12078&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/dftd4-python-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.6.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/dftd4-python-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.7.____73_pypypython_implpypy" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_python3.7.____73_pypy</td>
+              <td>linux_64_python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12078&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/dftd4-python-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.7.____73_pypy" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/dftd4-python-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_python3.7.____cpython</td>
+              <td>linux_64_python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12078&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/dftd4-python-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/dftd4-python-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_python3.8.____cpython</td>
+              <td>linux_64_python3.9.____cpythonpython_implpypy</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12078&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/dftd4-python-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12078&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/dftd4-python-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/dftd4-python-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.9.____cpythonpython_implpypy" alt="variant">
                 </a>
               </td>
             </tr>
@@ -94,6 +87,7 @@ Installing `dftd4-python` from the `conda-forge` channel can be achieved by addi
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
 Once the `conda-forge` channel has been enabled, `dftd4-python` can be installed with:
