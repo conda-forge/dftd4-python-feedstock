@@ -18,7 +18,7 @@ pushd _build
 meson "${meson_options[@]}"
 
 ninja
-cp dftd4/_libdftd4.*${SHLIB_EXT} ../dftd4
+cp dftd4/_libdftd4.*.so ../dftd4
 popd
 
 "$PYTHON" -m pip install . --no-deps -vvv
