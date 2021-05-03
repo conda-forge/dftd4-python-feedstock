@@ -45,9 +45,9 @@ test:
     - pytest
     - setuptools
     - qcelemental
-    - ase  # [python_impl == 'cpython']
-  commands:  # [python_impl == 'cpython']
-    - pytest --pyargs dftd4 -vv  # [python_impl == 'cpython']
+    - ase
+  commands:
+    - pytest --pyargs dftd4 -vv
 
 about:
   home: https://github.com/dftd4/dftd4/tree/main/python
