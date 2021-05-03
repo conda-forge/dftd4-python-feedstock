@@ -12,8 +12,8 @@ source:
     - disable-ffibuilder.patch
 
 build:
-  number: 0
-  skip: True  # [win or (osx and (python_impl == 'cpython' and py<38))]
+  number: 1
+  skip: True  # [win]
 
 requirements:
   build:
