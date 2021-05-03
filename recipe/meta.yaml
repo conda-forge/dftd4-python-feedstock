@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: True  # [win or osx]
 
 requirements:
   build:
@@ -46,9 +46,8 @@ test:
     - setuptools
     - qcelemental
     - ase  # [python_impl == 'cpython']
-  commands:
+  commands:  # [python_impl == 'cpython']
     - pytest --pyargs dftd4 -vv  # [python_impl == 'cpython']
-    - pytest --pyargs dftd4 --ignore=dftd4/test_ase.py -vv  # [python_impl == 'pypy']
 
 about:
   home: https://github.com/dftd4/dftd4/tree/main/python
