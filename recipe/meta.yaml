@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: True  # [win or (osx and (python_impl == 'cpython' and py<38))]
 
 requirements:
   build:
