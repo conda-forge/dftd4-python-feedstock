@@ -1,0 +1,11 @@
+diff --git a/python/setup.py b/python/setup.py
+index 2777e92..193f3c8 100644
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -17,6 +17,5 @@
+ from setuptools import setup
+ 
+ setup(
+-    cffi_modules=["build.py:ffibuilder"],
+     package_data={"dftd4": ["_libdftd4*.so", "*.toml"]},
+ )
