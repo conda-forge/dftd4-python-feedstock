@@ -16,7 +16,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - meson
+    - meson 0.58.*
     - ninja
     - python
     - cffi
