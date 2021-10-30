@@ -24,7 +24,7 @@ requirements:
   host:
     - python
     - pip
-    - dftd4
+    - dftd4 >=3.0
     - libblas
     - liblapack
     - llvm-openmp  # [osx]
