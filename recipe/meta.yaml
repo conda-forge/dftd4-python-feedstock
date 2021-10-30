@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/dftd4/dftd4/archive/v{{ version }}.tar.gz
   sha256: 60d4f30d97cae95a7b48a99e10848ef600b605f9da98c4893a6034bded1a7f24
-  patches:
-    - disable-ffibuilder.patch
 
 build:
   number: 0
