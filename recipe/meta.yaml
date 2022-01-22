@@ -1,5 +1,5 @@
 {% set name = "dftd4-python" %}
-{% set version = "3.2.0" %}
+{% set version = "3.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,18 +7,22 @@ package:
 
 source:
   url: https://github.com/dftd4/dftd4/archive/v{{ version }}.tar.gz
-  sha256: 9874db9e2329519db258dd75ee7ce7c97947f975b00087ba5fdf9a28741088f1
-  patches:
-    - disable-ffibuilder.patch
+  sha256: 60d4f30d97cae95a7b48a99e10848ef600b605f9da98c4893a6034bded1a7f24
 
 build:
   number: 0
-  skip: True  # [win or (osx and (python_impl == 'cpython' and py<38))]
+  skip: true  # [win or (osx and py<38)]
+  script:
+    - set -ex
+    - cd python
+    - meson setup _build ${MESON_ARGS:---prefix=${PREFIX} --libdir=lib} --buildtype=release
+    - meson compile -C _build
+    - meson install -C _build --no-rebuild
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - meson 0.53.*
+    - meson
     - ninja
     - python
     - cffi
@@ -27,15 +31,11 @@ requirements:
     - python
     - pip
     - dftd4
-    - libblas
-    - liblapack
-    - llvm-openmp  # [osx]
-    - libgomp  # [linux and not aarch64]
   run:
     - python
     - cffi
-    - {{ pin_compatible('numpy') }}
-    - {{ pin_compatible('dftd4', max_pin='x.x') }}
+    - numpy
+    - dftd4
 
 
 test:
@@ -54,9 +54,9 @@ about:
   license: LGPL-3.0-or-later
   license_family: LGPL
   license_file:
-    - "COPYING"
-    - "COPYING.LESSER"
-  summary: 'Python API for the DFT-D4 project'
+    - COPYING
+    - COPYING.LESSER
+  summary: Python API for the DFT-D4 project
   description: |
     Python interface for the generally applicable atomic-charge dependent
     London dispersion correction.
