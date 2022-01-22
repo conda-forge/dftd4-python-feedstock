@@ -8,20 +8,26 @@ package:
 source:
   url: https://github.com/dftd4/dftd4/archive/v{{ version }}.tar.gz
   sha256: 60d4f30d97cae95a7b48a99e10848ef600b605f9da98c4893a6034bded1a7f24
+  patches:
+    - python-version.patch
 
 build:
-  number: 0
-  skip: true  # [win or (osx and py<38)]
+  number: 1
+  skip: true  # [osx and py<38]
+  #skip: true  # [(not x86_64 and linux) and (python_impl == 'cpython' and py==39)]
   script:
-    - set -ex
+    - set -ex  # [unix]
     - cd python
-    - meson setup _build ${MESON_ARGS:---prefix=${PREFIX} --libdir=lib} --buildtype=release
+    - meson setup _build ${MESON_ARGS:---prefix=${PREFIX} --libdir=lib} --buildtype=release -Dpython_version=$BUILD_PREFIX/bin/python3  # [unix]
+    - meson setup _build --prefix=%PREFIX% --buildtype=release --pkg-config-path=%PREFIX%\lib\pkgconfig -Dpython_version=%BUILD_PREFIX%\python.exe  # [win]
     - meson compile -C _build
     - meson install -C _build --no-rebuild
+    - copy %SRC_DIR%\assets\parameters.toml %PREFIX%\lib\site-packages\dftd4  # [win]
 
 requirements:
   build:
-    - {{ compiler('c') }}
+    - {{ compiler('c') }}  # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
     - meson
     - ninja
     - python
@@ -30,12 +36,14 @@ requirements:
   host:
     - python
     - pip
-    - dftd4
+    - dftd4 >={{ version }}
+    - libblas
+    - liblapack
   run:
     - python
     - cffi
     - numpy
-    - dftd4
+    - {{ pin_compatible('dftd4', max_pin='x.x') }}
 
 
 test:
@@ -47,7 +55,7 @@ test:
     - qcelemental
     - ase
   commands:
-    - pytest --pyargs dftd4 -vv
+    - pytest --pyargs dftd4 -vv  # [build_platform == target_platform]
 
 about:
   home: https://github.com/dftd4/dftd4/tree/main/python

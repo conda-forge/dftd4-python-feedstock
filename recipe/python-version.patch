@@ -1,0 +1,38 @@
+diff --git a/meson_options.txt b/meson_options.txt
+index 82e648a2..932b6a0b 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -56,7 +56,7 @@ option(
+ option(
+   'python_version',
+   type: 'string',
+-  value: '3',
++  value: 'python3',
+   description: 'Python version to link against.',
+ )
+ 
+diff --git a/python/dftd4/meson.build b/python/dftd4/meson.build
+index 9824a6ca..d2feafba 100644
+--- a/python/dftd4/meson.build
++++ b/python/dftd4/meson.build
+@@ -18,7 +18,7 @@ cc = meson.get_compiler('c')
+ 
+ pymod = import('python')
+ python = pymod.find_installation(
+-  'python@0@'.format(get_option('python_version')),
++  get_option('python_version'),
+   modules: [
+     'cffi',
+   ],
+diff --git a/python/meson_options.txt b/python/meson_options.txt
+index 2cbcb7e4..e5f49982 100644
+--- a/python/meson_options.txt
++++ b/python/meson_options.txt
+@@ -17,6 +17,6 @@
+ option(
+   'python_version',
+   type: 'string',
+-  value: '3',
++  value: 'python3',
+   description: 'Python version to link against.',
+ )
