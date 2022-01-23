@@ -14,7 +14,7 @@ source:
 build:
   number: 1
   skip: true  # [osx and py<38]
-  #skip: true  # [(not x86_64 and linux) and (python_impl == 'cpython' and py==39)]
+  skip: true  # [(not x86_64 and linux) and (python_impl != 'cpython')]
   script:
     - set -ex  # [unix]
     - cd python
