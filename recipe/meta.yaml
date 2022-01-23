@@ -18,8 +18,8 @@ build:
   script:
     - set -ex  # [unix]
     - cd python
-    - meson setup _build ${MESON_ARGS:---prefix=${PREFIX} --libdir=lib} --buildtype=release -Dpython_version=$BUILD_PREFIX/bin/python3  # [unix]
-    - meson setup _build --prefix=%PREFIX% --buildtype=release --pkg-config-path=%PREFIX%\lib\pkgconfig -Dpython_version=%BUILD_PREFIX%\python.exe  # [win]
+    - meson setup _build ${MESON_ARGS:---prefix=${PREFIX} --libdir=lib} --buildtype=release -Dpython_version=$PYTHON  # [unix]
+    - meson setup _build --prefix=%PREFIX% --buildtype=release --pkg-config-path=%PREFIX%\lib\pkgconfig -Dpython_version=%PYTHON%  # [win]
     - meson compile -C _build
     - meson install -C _build --no-rebuild
     - copy %SRC_DIR%\assets\parameters.toml %PREFIX%\lib\site-packages\dftd4  # [win]
@@ -31,10 +31,10 @@ requirements:
     - meson
     - ninja
     - python
-    - cffi
     - pkg-config
   host:
     - python
+    - cffi
     - pip
     - dftd4 >={{ version }}
     - libblas
