@@ -16,8 +16,11 @@ build:
   script:
     - set -ex  # [unix]
     - cd python
-    - meson setup _build ${MESON_ARGS:---prefix=${PREFIX} --libdir=lib} --buildtype=release -Dpython_version=$PYTHON  # [unix]
-    - meson setup _build --prefix=%PREFIX% --buildtype=release --pkg-config-path=%PREFIX%\lib\pkgconfig -Dpython_version=%PYTHON%  # [win]
+    - >
+       meson setup _build
+       ${MESON_ARGS:---prefix=${PREFIX} --libdir=lib} -Dpython_version=$PYTHON  # [unix]
+       --prefix=%PREFIX% --pkg-config-path=%LIBRARY_PREFIX%\lib\pkgconfig -Dpython_version=%PYTHON%  # [win]
+       --buildtype=release
     - meson compile -C _build
     - meson install -C _build --no-rebuild
     - copy %SRC_DIR%\assets\parameters.toml %PREFIX%\lib\site-packages\dftd4  # [win]
@@ -41,7 +44,6 @@ requirements:
     - python
     - cffi
     - numpy
-    - {{ pin_compatible('dftd4', max_pin='x.x') }}
 
 
 test:
