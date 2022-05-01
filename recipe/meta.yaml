@@ -18,8 +18,9 @@ build:
     - cd python
     - >
        meson setup _build
-       ${MESON_ARGS:---prefix=${PREFIX} --libdir=lib} -Dpython_version=$PYTHON  # [unix]
-       --prefix=%PREFIX% --pkg-config-path=%LIBRARY_PREFIX%\lib\pkgconfig -Dpython_version=%PYTHON%  # [win]
+       ${MESON_ARGS:---prefix=${PREFIX} --libdir=lib}  # [unix]
+       --prefix=%PREFIX% --pkg-config-path=%LIBRARY_PREFIX%\lib\pkgconfig;%PREFIX%\lib\pkgconfig  # [win]
+       -Dpython_version={{ PYTHON }}
        --buildtype=release
     - meson compile -C _build
     - meson install -C _build --no-rebuild
