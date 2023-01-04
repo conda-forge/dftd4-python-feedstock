@@ -1,62 +1,51 @@
 {% set name = "dftd4-python" %}
-{% set version = "3.4.0" %}
+{% set version = "3.5.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/dftd4/dftd4/archive/v{{ version }}.tar.gz
-  sha256: f3b0a16a952817ae48e819626e13676fba3b61c8beea47b0f8ada2fbb679fb7b
+  url: https://github.com/dftd4/dftd4/releases/download/v{{ version }}/dftd4-{{ version }}-source.tar.xz
+  sha256: d2bab992b5ef999fd13fec8eb1da9e9e8d94b8727a2e624d176086197a00a46f
 
 build:
-  number: 1
-  skip: true  # [osx and py<38]
-  skip: true  # [(not x86_64 and linux) and (python_impl != 'cpython')]
-  script:
-    - set -ex  # [unix]
-    - cd python
-    - >
-       meson setup _build
-       ${MESON_ARGS:---prefix=${PREFIX} --libdir=lib}  # [unix]
-       --prefix=%PREFIX% --pkg-config-path=%LIBRARY_PREFIX%\lib\pkgconfig;%PREFIX%\lib\pkgconfig  # [win]
-       -Dpython_version={{ PYTHON }}
-       --buildtype=release
-    - meson compile -C _build
-    - meson install -C _build --no-rebuild
-    - copy %SRC_DIR%\assets\parameters.toml %PREFIX%\lib\site-packages\dftd4  # [win]
+  number: 0
+  skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}  # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
-    - meson
-    - ninja
-    - python
-    - pkg-config
+    - cffi                                # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+    - meson                               # [build_platform != target_platform]
+    - pkg-config                          # [build_platform != target_platform]
+    - python                              # [build_platform != target_platform]
   host:
-    - python
     - cffi
-    - pip
     - dftd4 >={{ version }}
     - libblas
     - liblapack
-  run:
+    - meson
+    - pkg-config
+    - pip
     - python
+  run:
     - cffi
     - numpy
-
+    - python
 
 test:
   imports:
     - dftd4
   requires:
     - pytest
-    - setuptools
+    - setuptools  # needs pkg_resources
     - qcelemental
     - ase
   commands:
-    - pytest --pyargs dftd4 -vv  # [build_platform == target_platform]
+    - pytest --pyargs dftd4 -vv
 
 about:
   home: https://github.com/dftd4/dftd4/tree/main/python
