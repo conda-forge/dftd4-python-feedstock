@@ -1,5 +1,5 @@
 {% set name = "dftd4-python" %}
-{% set version = "3.5.0" %}
+{% set version = "3.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/dftd4/dftd4/releases/download/v{{ version }}/dftd4-{{ version }}-source.tar.xz
-  sha256: d2bab992b5ef999fd13fec8eb1da9e9e8d94b8727a2e624d176086197a00a46f
+  sha256: 56b3b4650853a34347d3d56c93d7596ecbe2208c4a14dbd027959fd4a009679d
 
 build:
   number: 0
@@ -58,6 +58,7 @@ about:
   description: |
     Python interface for the generally applicable atomic-charge dependent
     London dispersion correction.
+  doc_url: https://dftd4.readthedocs.io
 
 extra:
   recipe-maintainers:
