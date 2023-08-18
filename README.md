@@ -1,13 +1,15 @@
-About dftd4-python
-==================
+About dftd4-python-feedstock
+============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/dftd4-python-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/dftd4/dftd4/tree/main/python
 
 Package license: LGPL-3.0-or-later
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/dftd4-python-feedstock/blob/main/LICENSE.txt)
-
 Summary: Python API for the DFT-D4 project
+
+Documentation: https://dftd4.readthedocs.io
 
 Python interface for the generally applicable atomic-charge dependent
 London dispersion correction.
