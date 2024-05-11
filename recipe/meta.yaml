@@ -10,13 +10,15 @@ source:
   sha256: 56b3b4650853a34347d3d56c93d7596ecbe2208c4a14dbd027959fd4a009679d
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}  # [unix]
+    - {{ stdlib('c') }}    # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
+    - {{ stdlib('m2w64_c') }}    # [win]
     - cffi                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - meson                               # [build_platform != target_platform]
