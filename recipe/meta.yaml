@@ -1,16 +1,16 @@
 {% set name = "dftd4-python" %}
-{% set version = "3.6.0" %}
+{% set version = "3.7.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/dftd4/dftd4/releases/download/v{{ version }}/dftd4-{{ version }}-source.tar.xz
-  sha256: 56b3b4650853a34347d3d56c93d7596ecbe2208c4a14dbd027959fd4a009679d
+  url: https://github.com/dftd4/dftd4/releases/download/v{{ version }}/dftd4-{{ version }}.tar.xz
+  sha256: 4e8749df6852bf863d5d1831780a2d30e9ac4afcfebbbfe5f6a6a73d06d6c6ee
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -21,18 +21,21 @@ requirements:
     - {{ stdlib('m2w64_c') }}    # [win]
     - cffi                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - meson                               # [build_platform != target_platform]
-    - pkg-config                          # [build_platform != target_platform]
+    - meson-python                        # [build_platform != target_platform]
+    - pkg-config
     - python                              # [build_platform != target_platform]
+    - python-build                        # [build_platform != target_platform]
+    - setuptools                          # [build_platform != target_platform]
   host:
     - cffi
     - dftd4 >={{ version }}
     - libblas
     - liblapack
-    - meson
-    - pkg-config
+    - meson-python
     - pip
     - python
+    - python-build
+    - setuptools
   run:
     - cffi
     - numpy
