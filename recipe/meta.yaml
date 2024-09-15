@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/dftd4/dftd4/releases/download/v{{ version }}/dftd4-{{ version }}.tar.gz
-  sha256: 2e0d3504038358b8a82fdd21912b7765d416a58ebedbdd44f2ca8d2e88339ad7
+  url: https://github.com/dftd4/dftd4/releases/download/v{{ version }}/dftd4-{{ version }}.tar.xz
+  sha256: 4e8749df6852bf863d5d1831780a2d30e9ac4afcfebbbfe5f6a6a73d06d6c6ee
 
 build:
   number: 0
