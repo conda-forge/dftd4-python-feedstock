@@ -8,16 +8,17 @@ package:
 source:
   url: https://github.com/dftd4/dftd4/releases/download/v{{ version }}/dftd4-{{ version }}.tar.xz
   sha256: 4e8749df6852bf863d5d1831780a2d30e9ac4afcfebbbfe5f6a6a73d06d6c6ee
+  patches:
+    - gh-268.patch
 
 build:
-  number: 0
-  skip: true  # [win]
+  number: 1
 
 requirements:
   build:
     - {{ compiler('c') }}  # [unix]
-    - {{ stdlib('c') }}    # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
+    - {{ stdlib('c') }}    # [unix]
     - {{ stdlib('m2w64_c') }}    # [win]
     - cffi                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
