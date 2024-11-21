@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/dftd4/dftd4/releases/download/v{{ version }}/dftd4-{{ version }}.tar.xz
   sha256: 4e8749df6852bf863d5d1831780a2d30e9ac4afcfebbbfe5f6a6a73d06d6c6ee
+  patches:
+    - gh-268.patch
 
 build:
   number: 1
