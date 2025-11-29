@@ -12,7 +12,7 @@ source:
     - gh-268.patch
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -48,7 +48,6 @@ test:
   requires:
     - pytest
     - setuptools  # needs pkg_resources
-    - qcelemental
     - ase
   commands:
     - pytest --pyargs dftd4 -vv
