@@ -49,7 +49,7 @@ test:
     - pytest
     - setuptools  # needs pkg_resources
     - ase
-    - qcelemental
+    - qcelemental <0.33
   commands:
     - pytest --pyargs dftd4 -vv
 
