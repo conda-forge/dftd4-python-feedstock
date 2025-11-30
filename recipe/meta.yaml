@@ -49,6 +49,7 @@ test:
     - pytest
     - setuptools  # needs pkg_resources
     - ase
+    - qcelemental
   commands:
     - pytest --pyargs dftd4 -vv
 
