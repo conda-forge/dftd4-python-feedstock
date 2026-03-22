@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/dftd4/dftd4/releases/download/v{{ version }}/dftd4-{{ version }}-source.tar.xz
-  sha256: ed4a6a3ba0a89b8d6825bf11724dee647fd8ee6272e7822e0cbd9847994eb872
+  url: https://github.com/loriab/dftd4/archive/qcsk_v2_adapt.tar.gz
+  sha256: 4265b42aa76cf54d542ba1a9a29c3e6bc76ea16b8c07d769d87ca3d77ae8b0b9
 
 build:
   number: 0
@@ -45,7 +45,7 @@ test:
     - dftd4
   requires:
     - pytest
-    - setuptools  # needs pkg_resources
+    - setuptools
     - qcelemental
     - ase
   commands:
