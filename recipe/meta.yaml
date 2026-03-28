@@ -39,6 +39,8 @@ requirements:
     - cffi
     - numpy
     - python
+  run_constrained:
+    - qcelemental >=0.50.0rc3             # [py == 314]
 
 test:
   imports:
