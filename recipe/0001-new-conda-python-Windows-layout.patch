@@ -1,0 +1,47 @@
+From 7c2b41f921d4e5de5d4a43d76072bc7149692a66 Mon Sep 17 00:00:00 2001
+From: "Lori A. Burns" <lori.burns@gmail.com>
+Date: Sun, 11 Oct 2026 19:42:09 -0400
+Subject: [PATCH 1/1] new conda python Windows layout
+
+---
+ python/dftd4/parameters.py | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/python/dftd4/parameters.py b/python/dftd4/parameters.py
+index 22e58d1..a56f742 100644
+--- a/python/dftd4/parameters.py
++++ b/python/dftd4/parameters.py
+@@ -54,6 +54,7 @@ def get_data_file_name(base_name: str = "parameters.toml") -> str:
+     )
+     if not exists(data_file):
+         # for Windows install layout
++        # * conda py<315 at Lib/site-packages/dftd4/parameters.py|toml
+         data_file = join(
+             dirname(__file__),
+             "..",
+@@ -65,7 +66,21 @@ def get_data_file_name(base_name: str = "parameters.toml") -> str:
+             base_name,
+         )
+         if not exists(data_file):
+-            data_file = join(dirname(__file__), base_name)
++            # for Windows install layout
++            # * conda py>=315 at lib/python/site-packages/dftd4/parameters.py|toml
++            data_file = join(
++                dirname(__file__),
++                "..",
++                "..",
++                "..",
++                "..",
++                "Library",
++                "share",
++                "dftd4",
++                base_name,
++            )
++            if not exists(data_file):
++                data_file = join(dirname(__file__), base_name)
+ 
+     return data_file
+ 
+-- 
+2.40.1
+

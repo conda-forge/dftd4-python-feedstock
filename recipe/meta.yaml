@@ -10,7 +10,7 @@ source:
   sha256: 3cbb7c782428d8e31bbcddd489181fc3a25be028032caaa9d034447cd3ec439b
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -40,7 +40,7 @@ requirements:
     - numpy
     - python
   run_constrained:
-    - qcelemental >=0.50.0rc3             # [py == 314]
+    - qcelemental >=0.50.0                # [py >= 314]
 
 test:
   imports:
@@ -51,6 +51,7 @@ test:
     - ase
   commands:
     - pytest --pyargs dftd4 -vv
+    - python -c "from dftd4.parameters import get_all_damping_params as f; p=f(); print(len(p), 'e.g.', sorted(p)[:3])"
 
 
 about:
